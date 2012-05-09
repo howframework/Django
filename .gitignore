@@ -5,3 +5,9 @@
 *~
 .project
 .pydevproject
+lib
+dist
+build
+include
+bin
+*.egg-info
