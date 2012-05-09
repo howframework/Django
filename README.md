@@ -1,3 +1,8 @@
+Live Demo
+=========
+
+http://djangohow-k4ml.rhcloud.com/
+
 Django on OpenShift
 ===================
 
