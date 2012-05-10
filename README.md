@@ -27,16 +27,16 @@ back up your database w/ 'rhc app snapshot save' first :) )
 Running on OpenShift
 ----------------------------
 
-Create an account at http://openshift.redhat.com/
+Create an account at http://openshift.redhat.com/ and install the [command line tools client][1].
 
 Create a python-2.6 application
 
-    rhc app create -a django -t python-2.6
+    rhc app create -a djangohow -t python-2.6
 
 Add this upstream repo
 
-    cd django
-    git remote add upstream -m master git://github.com/openshift/django-example.git
+    cd djangohow
+    git remote add upstream -m master https://github.com/howframework/Django.git
     git pull -s recursive -X theirs upstream master
     
 Then push the repo upstream
@@ -45,5 +45,19 @@ Then push the repo upstream
 
 That's it, you can now checkout your application at (default admin account is admin/admin):
 
-    http://django-$yournamespace.rhcloud.com
+    http://djangohow-$yournamespace.rhcloud.com
+    
+[1]:https://openshift.redhat.com/app/getting_started
 
+Local Development
+=================
+Make sure to have virtualenv installed first. The easiest way is to install using linux package manager such as apt-get or yum.
+
+    sudo apt-get install virtualenv
+    cd djangohow
+    virtualenv --no-site-packages .
+    ./bin/python setup.py install
+    ./bin/python manage.py syncdb
+    ./bin/python manage.py runserver
+    
+You can then access the application now running at http://localhost:8000/.
