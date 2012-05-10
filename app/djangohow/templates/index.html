@@ -42,8 +42,14 @@
           <a class="brand" href="#">Project name</a>
           <div class="nav-collapse">
             <ul class="nav">
-              <li class="active"><a href="#">Home</a></li>
+              <li class="active"><a href="/">Home</a></li>
               <li><a href="/admin/">Admin</a></li>
+              {% if user.is_authenticated %}
+              <li><a href="{% url auth_logout %}">Logout ({{ user.username }})</a></li>
+              {% else %}
+              <li><a href="{% url auth_login %}">Login</a></li>
+              <li><a href="{% url registration_register %}">Register</a></li>
+              {% endif %}
             </ul>
           </div><!--/.nav-collapse -->
         </div>
@@ -52,10 +58,12 @@
 
     <div class="container">
 
+      {% block content %}
       <!-- Main hero unit for a primary marketing message or call to action -->
       <div class="hero-unit">
         <h1>Learn Django!</h1>
       </div>
+      {% endblock %}
 
       <hr>
 
